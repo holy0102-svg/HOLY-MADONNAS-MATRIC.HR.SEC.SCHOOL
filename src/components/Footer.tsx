@@ -96,13 +96,13 @@ export const Footer: React.FC = () => {
             </h4>
             <ul className="space-y-2 text-xs text-[#B8B2A7]">
               <li>
-                <a href="#hero" className="hover:text-white flex items-center gap-1.5 transition-colors">
+                <a href="#home" className="hover:text-white flex items-center gap-1.5 transition-colors">
                   <ChevronRight className="w-3 h-3 text-[#8C857B]" />
                   <span>{t.navHome}</span>
                 </a>
               </li>
               <li>
-                <a href="#principal-message" className="hover:text-white flex items-center gap-1.5 transition-colors">
+                <a href="#principal" className="hover:text-white flex items-center gap-1.5 transition-colors">
                   <ChevronRight className="w-3 h-3 text-[#8C857B]" />
                   <span>{t.navPrincipal}</span>
                 </a>

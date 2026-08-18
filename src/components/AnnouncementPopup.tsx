@@ -62,6 +62,7 @@ export const AnnouncementPopup: React.FC = () => {
           <img
             src="https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=800&q=80"
             alt="Admissions Open"
+            referrerPolicy="no-referrer"
             className="w-full h-full object-cover mix-blend-overlay opacity-60"
           />
           <div className="absolute inset-0 bg-gradient-to-t from-[#FCFAF7] via-transparent to-transparent" />

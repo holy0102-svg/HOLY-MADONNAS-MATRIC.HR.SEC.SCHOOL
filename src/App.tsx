@@ -24,8 +24,7 @@ import { SEOMetaInspector } from './components/SEOMetaInspector';
 import { SectionType } from './utils/seoMeta';
 
 const SchoolApp: React.FC = () => {
-  const { isSEOInspectorOpen, closeSEOInspector } = useSchool();
-  const [isAIChatOpen, setIsAIChatOpen] = useState(false);
+  const { isSEOInspectorOpen, closeSEOInspector, isAIAssistantOpen, closeAIAssistant, openAIAssistant } = useSchool();
   const [activeSection, setActiveSection] = useState<SectionType>('home');
 
   return (
@@ -34,7 +33,7 @@ const SchoolApp: React.FC = () => {
       <DynamicSEOHead onSectionChange={setActiveSection} />
 
       {/* 1. Header (Sticky navigation, language switcher, quick contacts) */}
-      <Header onOpenAI={() => setIsAIChatOpen(true)} />
+      <Header onOpenAI={openAIAssistant} />
 
       <main>
         {/* 2. Hero / Main Banner */}
@@ -78,7 +77,7 @@ const SchoolApp: React.FC = () => {
       <Footer />
 
       {/* 17. Floating Contact & Action Buttons */}
-      <FloatingActions onOpenAI={() => setIsAIChatOpen(true)} />
+      <FloatingActions onOpenAI={openAIAssistant} />
 
       {/* 18. Admissions Open Initial Announcement Popup */}
       <AnnouncementPopup />
@@ -91,8 +90,8 @@ const SchoolApp: React.FC = () => {
 
       {/* 21. Madonnas AI Bilingual School Assistant */}
       <AIAssistantModal 
-        isOpen={isAIChatOpen} 
-        onClose={() => setIsAIChatOpen(false)} 
+        isOpen={isAIAssistantOpen} 
+        onClose={closeAIAssistant} 
       />
 
       {/* 22. Dynamic SEO & Meta Tag Inspector Modal */}

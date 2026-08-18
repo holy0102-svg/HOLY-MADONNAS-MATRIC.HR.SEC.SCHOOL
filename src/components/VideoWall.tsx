@@ -137,6 +137,7 @@ export const VideoWall: React.FC = () => {
                   src={`https://img.youtube.com/vi/${video.youtubeId}/hqdefault.jpg`}
                   alt={video.title}
                   loading="lazy"
+                  referrerPolicy="no-referrer"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1511578314322-379afb476865?auto=format&fit=crop&w=800&q=80';
                   }}

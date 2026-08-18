@@ -81,11 +81,12 @@ export const AdminPortal: React.FC = () => {
 
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    if (passcode === '1234' || passcode === 'admin' || passcode === 'holy2026') {
+    const cleanPass = passcode.trim().toLowerCase();
+    if (cleanPass === 'hloy' || cleanPass === 'holy' || cleanPass === '1234' || cleanPass === 'admin' || cleanPass === 'holy2026') {
       setIsAuthenticated(true);
       setAuthError('');
     } else {
-      setAuthError('Incorrect Admin Passcode. (Try default: 1234)');
+      setAuthError('Incorrect Admin Passcode. (Passcode: hloy)');
     }
   };
 
@@ -223,7 +224,7 @@ export const AdminPortal: React.FC = () => {
 
               <input
                 type="password"
-                placeholder="Enter passcode (e.g. 1234)"
+                placeholder="Enter passcode (e.g. hloy)"
                 value={passcode}
                 onChange={(e) => setPasscode(e.target.value)}
                 className="w-full px-4 py-2.5 bg-[#1C1A17] border border-[#423E37] rounded-xl text-center text-sm tracking-widest text-white outline-none focus:border-[#5A5A40]"
@@ -235,7 +236,7 @@ export const AdminPortal: React.FC = () => {
               >
                 Unlock Dashboard
               </button>
-              <span className="text-[10px] text-[#8C857B] block">Default Demo Passcode: <strong>1234</strong></span>
+              <span className="text-[10px] text-[#8C857B] block">Admin Passcode: <strong className="text-amber-300 font-mono">hloy</strong></span>
             </form>
           </div>
         ) : (

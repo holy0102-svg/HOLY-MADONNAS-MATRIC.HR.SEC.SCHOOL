@@ -35,6 +35,7 @@ export const Hero: React.FC = () => {
         <img
           src="https://images.unsplash.com/photo-1580582932707-520aed937b7b?auto=format&fit=crop&w=2000&q=85"
           alt="Holy Madonnas School Campus Lalapet"
+          referrerPolicy="no-referrer"
           className="w-full h-full object-cover object-center scale-105 animate-in fade-in duration-1000 opacity-20 filter brightness-95 contrast-105"
         />
         <div className="absolute inset-0 bg-gradient-to-t from-[#FCFAF7] via-[#FCFAF7]/90 to-[#F5F2ED]/80" />

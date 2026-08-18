@@ -139,6 +139,7 @@ export const PhotoGallery: React.FC = () => {
                 src={photo.imageUrl}
                 alt={language === 'ta' ? photo.titleTa : photo.title}
                 loading="lazy"
+                referrerPolicy="no-referrer"
                 className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
               />
 
@@ -229,6 +230,7 @@ export const PhotoGallery: React.FC = () => {
               <img
                 src={activePhoto.imageUrl}
                 alt={activePhoto.title}
+                referrerPolicy="no-referrer"
                 className="max-h-[75vh] w-auto max-w-full object-contain mx-auto"
               />
             </div>

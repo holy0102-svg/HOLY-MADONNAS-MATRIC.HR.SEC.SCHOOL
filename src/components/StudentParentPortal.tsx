@@ -78,7 +78,7 @@ export const StudentParentPortal: React.FC = () => {
                 : 'bg-[#F5F2ED] text-[#3D3A35] border-[#E5E0D8] hover:bg-[#EAE4DC]'
             }`}
           >
-            <Calendar className="w-4 h-4 text-white" />
+            <Calendar className={`w-4 h-4 ${activeTab === 'timetable' ? 'text-white' : 'text-[#5A5A40]'}`} />
             <span>{t.tabTimetable}</span>
           </button>
 
@@ -91,7 +91,7 @@ export const StudentParentPortal: React.FC = () => {
                 : 'bg-[#F5F2ED] text-[#3D3A35] border-[#E5E0D8] hover:bg-[#EAE4DC]'
             }`}
           >
-            <CreditCard className="w-4 h-4 text-white" />
+            <CreditCard className={`w-4 h-4 ${activeTab === 'fee' ? 'text-white' : 'text-[#5A5A40]'}`} />
             <span>{t.tabFeeInfo}</span>
           </button>
 
@@ -104,7 +104,7 @@ export const StudentParentPortal: React.FC = () => {
                 : 'bg-[#F5F2ED] text-[#3D3A35] border-[#E5E0D8] hover:bg-[#EAE4DC]'
             }`}
           >
-            <Bus className="w-4 h-4 text-white" />
+            <Bus className={`w-4 h-4 ${activeTab === 'bus' ? 'text-white' : 'text-[#5A5A40]'}`} />
             <span>{t.tabBusRoutes}</span>
           </button>
 
@@ -117,7 +117,7 @@ export const StudentParentPortal: React.FC = () => {
                 : 'bg-[#F5F2ED] text-[#3D3A35] border-[#E5E0D8] hover:bg-[#EAE4DC]'
             }`}
           >
-            <Download className="w-4 h-4 text-white" />
+            <Download className={`w-4 h-4 ${activeTab === 'downloads' ? 'text-white' : 'text-[#5A5A40]'}`} />
             <span>{t.tabDownloads}</span>
           </button>
         </div>
