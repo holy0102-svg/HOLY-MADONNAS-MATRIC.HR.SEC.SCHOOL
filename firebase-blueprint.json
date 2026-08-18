@@ -1,0 +1,60 @@
+{
+  "entities": {
+    "Admission": {
+      "title": "Admission Application",
+      "description": "Student admission application records",
+      "type": "object",
+      "properties": {
+        "studentName": { "type": "string" },
+        "parentName": { "type": "string" },
+        "mobileNumber": { "type": "string" },
+        "gradeSeeking": { "type": "string" },
+        "dateOfBirth": { "type": "string" },
+        "status": { "type": "string", "enum": ["pending", "reviewed", "approved", "rejected"] },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["studentName", "parentName", "mobileNumber", "gradeSeeking"]
+    },
+    "Enquiry": {
+      "title": "Contact Enquiry",
+      "description": "General visitor and parent message submissions",
+      "type": "object",
+      "properties": {
+        "name": { "type": "string" },
+        "phone": { "type": "string" },
+        "email": { "type": "string" },
+        "message": { "type": "string" },
+        "classSeeking": { "type": "string" },
+        "createdAt": { "type": "string" }
+      },
+      "required": ["name", "phone", "message"]
+    },
+    "NewsCircular": {
+      "title": "News and Circular",
+      "description": "School announcements, exam notifications, and circulars",
+      "type": "object",
+      "properties": {
+        "title": { "type": "string" },
+        "category": { "type": "string" },
+        "date": { "type": "string" },
+        "content": { "type": "string" },
+        "isImportant": { "type": "boolean" }
+      },
+      "required": ["title", "category", "date", "content"]
+    }
+  },
+  "firestore": {
+    "/admissions/{admissionId}": {
+      "schema": { "$ref": "#/entities/Admission" },
+      "description": "Public admission submissions and admin reviews"
+    },
+    "/enquiries/{enquiryId}": {
+      "schema": { "$ref": "#/entities/Enquiry" },
+      "description": "Public contact form submissions"
+    },
+    "/circulars/{circularId}": {
+      "schema": { "$ref": "#/entities/NewsCircular" },
+      "description": "School news and circular postings"
+    }
+  }
+}

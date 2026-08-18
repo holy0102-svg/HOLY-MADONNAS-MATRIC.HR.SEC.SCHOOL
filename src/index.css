@@ -1,0 +1,45 @@
+@import "tailwindcss";
+
+:root {
+  --bg-natural: #FCFAF7;
+  --surface-natural: #FFFFFF;
+  --surface-warm: #F5F2ED;
+  --surface-stone: #EFEBE4;
+  --border-natural: #E5E0D8;
+  --border-subtle: #EDE8E0;
+  --text-primary: #2C2A26;
+  --text-body: #3D3A35;
+  --text-muted: #8A847C;
+  --olive-primary: #5A5A40;
+  --olive-dark: #3F3F2C;
+  --olive-light: #707052;
+  --terracotta: #FF6321;
+  --terracotta-dark: #E25213;
+}
+
+body {
+  background-color: #FCFAF7;
+  color: #3D3A35;
+  font-family: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+}
+
+::selection {
+  background-color: #5A5A40;
+  color: #FFFFFF;
+}
+
+/* Custom Scrollbars in Natural Tones */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+::-webkit-scrollbar-track {
+  background: #F5F2ED;
+}
+::-webkit-scrollbar-thumb {
+  background: #D9D3C7;
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #8A847C;
+}

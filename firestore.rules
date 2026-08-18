@@ -1,0 +1,22 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Allow public read on circulars, public create on admissions and enquiries
+    match /circulars/{circularId} {
+      allow read: if true;
+      allow write: if true;
+    }
+    
+    match /admissions/{admissionId} {
+      allow read, write: if true;
+    }
+    
+    match /enquiries/{enquiryId} {
+      allow read, write: if true;
+    }
+
+    match /{document=**} {
+      allow read, write: if true;
+    }
+  }
+}

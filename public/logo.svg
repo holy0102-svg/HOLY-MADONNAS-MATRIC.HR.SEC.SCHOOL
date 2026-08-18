@@ -1,0 +1,151 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" width="100%" height="100%">
+  <defs>
+    <!-- Outer Gold Gradient -->
+    <linearGradient id="goldRim" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#E2B755" />
+      <stop offset="30%" stop-color="#FFF0A5" />
+      <stop offset="50%" stop-color="#C5962B" />
+      <stop offset="70%" stop-color="#FDE887" />
+      <stop offset="100%" stop-color="#A17417" />
+    </linearGradient>
+
+    <!-- Inner Background Radial Gradient -->
+    <radialGradient id="creamBg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#FFFFF0" />
+      <stop offset="60%" stop-color="#FFF5C8" />
+      <stop offset="100%" stop-color="#FEE488" />
+    </radialGradient>
+
+    <!-- Inner Gold Medallion Gradient -->
+    <radialGradient id="innerMedallion" cx="45%" cy="40%" r="60%">
+      <stop offset="0%" stop-color="#FFF4B8" />
+      <stop offset="40%" stop-color="#FCD265" />
+      <stop offset="75%" stop-color="#E5A924" />
+      <stop offset="100%" stop-color="#B87C0D" />
+    </radialGradient>
+
+    <!-- Diya Bowl Metallic Gradient -->
+    <linearGradient id="diyaBowl" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#EAA332" />
+      <stop offset="35%" stop-color="#FFF2A1" />
+      <stop offset="65%" stop-color="#B8441F" />
+      <stop offset="100%" stop-color="#6E1B0A" />
+    </linearGradient>
+
+    <!-- Flame Core Gradient -->
+    <radialGradient id="flameGlow" cx="50%" cy="70%" r="60%">
+      <stop offset="0%" stop-color="#FFFFFF" />
+      <stop offset="25%" stop-color="#FFF066" />
+      <stop offset="60%" stop-color="#FF7A00" />
+      <stop offset="100%" stop-color="#D92000" />
+    </radialGradient>
+
+    <!-- Ribbon Gradient -->
+    <linearGradient id="ribbonPink" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#F5A8C4" />
+      <stop offset="50%" stop-color="#FCD5E5" />
+      <stop offset="100%" stop-color="#F5A8C4" />
+    </linearGradient>
+
+    <!-- Path for Top Outer Text -->
+    <path id="textPathTopOuter" d="M 68 250 A 182 182 0 1 1 432 250" fill="none" />
+    <!-- Path for Bottom Outer Text -->
+    <path id="textPathBottomOuter" d="M 72 250 A 178 178 0 0 0 428 250" fill="none" />
+
+    <!-- Path for Inner Medallion Top Text -->
+    <path id="textPathInnerTop" d="M 172 250 A 78 78 0 1 1 328 250" fill="none" />
+    <!-- Path for Inner Medallion Bottom Text -->
+    <path id="textPathInnerBottom" d="M 175 250 A 75 75 0 0 0 325 250" fill="none" />
+  </defs>
+
+  <!-- 1. Outer Deep Navy Rim & Base Ring -->
+  <circle cx="250" cy="250" r="244" fill="#0C2056" stroke="url(#goldRim)" stroke-width="4" />
+  <circle cx="250" cy="250" r="236" fill="none" stroke="url(#goldRim)" stroke-width="2" />
+
+  <!-- 2. Main Cream & Golden Outer Band Area -->
+  <circle cx="250" cy="250" r="230" fill="url(#creamBg)" stroke="#0C2056" stroke-width="2" />
+  <circle cx="250" cy="250" r="148" fill="none" stroke="#0C2056" stroke-width="2.5" />
+
+  <!-- 3. Outer Ring Curved Typography: Top -->
+  <text font-family="'Plus Jakarta Sans', 'Arial Black', Arial, sans-serif" font-weight="900" font-size="22.5" fill="#0A1E52" letter-spacing="1.8">
+    <textPath href="#textPathTopOuter" startOffset="50%" text-anchor="middle">
+      HOLY MADONNA'S MATRIC HR. SEC. SCHOOL
+    </textPath>
+  </text>
+
+  <!-- 4. Outer Ring Curved Typography: Bottom -->
+  <text font-family="'Plus Jakarta Sans', 'Arial Black', Arial, sans-serif" font-weight="900" font-size="26" fill="#0A1E52" letter-spacing="4">
+    <textPath href="#textPathBottomOuter" startOffset="50%" text-anchor="middle">
+      ★ ★ ★   LALAPET   ★ ★ ★
+    </textPath>
+  </text>
+
+  <!-- 5. Inner Golden Seal / Medallion -->
+  <circle cx="250" cy="246" r="138" fill="url(#innerMedallion)" stroke="#A0720A" stroke-width="3" />
+  <circle cx="250" cy="246" r="130" fill="none" stroke="#FFF5B8" stroke-width="1.5" />
+  <circle cx="250" cy="246" r="95" fill="#FFFDE8" stroke="#A0720A" stroke-width="2.5" />
+
+  <!-- Sunburst Rays behind Diya -->
+  <g stroke="#F39C12" stroke-width="1.2" opacity="0.65">
+    <line x1="250" y1="210" x2="250" y2="165" />
+    <line x1="250" y1="210" x2="270" y2="168" />
+    <line x1="250" y1="210" x2="288" y2="178" />
+    <line x1="250" y1="210" x2="300" y2="195" />
+    <line x1="250" y1="210" x2="305" y2="215" />
+    <line x1="250" y1="210" x2="230" y2="168" />
+    <line x1="250" y1="210" x2="212" y2="178" />
+    <line x1="250" y1="210" x2="200" y2="195" />
+    <line x1="250" y1="210" x2="195" y2="215" />
+  </g>
+
+  <!-- Inner Medallion Text: Top (Crimson) -->
+  <text font-family="'Plus Jakarta Sans', Arial, sans-serif" font-weight="900" font-size="10.8" fill="#881515" letter-spacing="0.8">
+    <textPath href="#textPathInnerTop" startOffset="50%" text-anchor="middle">
+      HOLY MADONNA'S MATRIC HR. SEC. SCHOOL
+    </textPath>
+  </text>
+
+  <!-- Inner Medallion Text: Bottom (Emerald Green + Magenta Stars) -->
+  <text font-family="'Plus Jakarta Sans', 'Arial Black', Arial, sans-serif" font-weight="900" font-size="14.5" fill="#0C6B2F" letter-spacing="2.2">
+    <textPath href="#textPathInnerBottom" startOffset="50%" text-anchor="middle">
+      ★ LALAPET ★
+    </textPath>
+  </text>
+
+  <!-- 6. Traditional Diya (Oil Lamp) Illustration -->
+  <g transform="translate(0, 5)">
+    <!-- Outer Diya Flame Aura -->
+    <ellipse cx="250" cy="200" rx="28" ry="36" fill="#FFE57F" opacity="0.45" />
+
+    <!-- Radiant Flame Rays -->
+    <path d="M 250 162 C 265 185 272 204 266 218 C 260 228 240 228 234 218 C 228 204 235 185 250 162 Z" fill="url(#flameGlow)" stroke="#FFF4A3" stroke-width="1.5" />
+    <!-- Inner White Core Flame -->
+    <path d="M 250 178 C 257 194 260 206 257 215 C 253 220 247 220 243 215 C 240 206 243 194 250 178 Z" fill="#FFFFFF" opacity="0.9" />
+
+    <!-- Diya Lamp Bowl (Upper Lip & Base) -->
+    <!-- Lamp Lip Ring -->
+    <ellipse cx="250" cy="226" rx="46" ry="12" fill="#F4A62A" stroke="#8A3205" stroke-width="2" />
+    <ellipse cx="250" cy="225" rx="42" ry="9" fill="#FFF2A3" />
+
+    <!-- Lamp Body / Vessel -->
+    <path d="M 204 226 C 208 248 230 262 250 262 C 270 262 292 248 296 226 C 285 235 268 240 250 240 C 232 240 215 235 204 226 Z" fill="url(#diyaBowl)" stroke="#6A1C00" stroke-width="2.5" />
+
+    <!-- Lamp Pedestal / Stand -->
+    <path d="M 238 262 L 234 268 C 230 271 270 271 266 268 L 262 262 Z" fill="#D38115" stroke="#7A2202" stroke-width="1.5" />
+  </g>
+
+  <!-- 7. Motto Ribbon Scroll -->
+  <g transform="translate(0, 10)">
+    <!-- Ribbon Shadow & Tail Cutouts -->
+    <path d="M 136 322 L 175 308 L 175 336 L 148 342 L 136 322 Z" fill="#D47898" stroke="#8E2D4E" stroke-width="1" />
+    <path d="M 364 322 L 325 308 L 325 336 L 352 342 L 364 322 Z" fill="#D47898" stroke="#8E2D4E" stroke-width="1" />
+
+    <!-- Ribbon Body -->
+    <path d="M 166 310 L 334 310 C 342 310 348 316 346 324 L 343 334 C 341 341 334 345 326 345 L 174 345 C 166 345 159 341 157 334 L 154 324 C 152 316 158 310 166 310 Z" fill="url(#ribbonPink)" stroke="#A03358" stroke-width="1.8" />
+
+    <!-- Ribbon Motto Text -->
+    <text x="250" y="331" font-family="'Plus Jakarta Sans', 'Arial Black', Arial, sans-serif" font-weight="900" font-size="14.5" fill="#0C2056" text-anchor="middle" letter-spacing="1.2">
+      LIGHT TO ENLIGHTEN
+    </text>
+  </g>
+</svg>
