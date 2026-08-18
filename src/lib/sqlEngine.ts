@@ -1,11 +1,9 @@
 /**
- * Supabase & Cloud SQL Query Execution Engine
+ * Standalone SQL Query Execution Engine
  * Evaluates standard SQL statements against school tables with full CRUD, filtering, sorting, aggregates and schema introspection.
  */
 
 import { initialGalleryPhotos, initialVideos, initialNews, schoolBusRoutes } from '../data/schoolData';
-import { db } from './firebase';
-import { collection, getDocs, doc, setDoc, deleteDoc, updateDoc } from 'firebase/firestore';
 
 export interface SqlColumn {
   name: string;

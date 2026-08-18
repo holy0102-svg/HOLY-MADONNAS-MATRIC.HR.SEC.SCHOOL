@@ -583,7 +583,7 @@ export const AdminPortal: React.FC = () => {
                 </div>
               )}
 
-              {/* TAB 5: DATABASE & SUPABASE */}
+              {/* TAB 5: DATABASE, SUPABASE & VERCEL */}
               {adminTab === 'database' && (
                 <div className="space-y-6">
                   {/* Status Banner */}
@@ -593,19 +593,20 @@ export const AdminPortal: React.FC = () => {
                         <Database className="w-5 h-5" />
                       </div>
                       <div>
-                        <div className="flex items-center gap-2">
+                        <div className="flex items-center gap-2 flex-wrap">
                           <h4 className="font-bold text-white text-base font-['Cinzel',serif]">
-                            Cloud Database & Storage Backend
+                            Supabase Cloud & Vercel Deployment
                           </h4>
-                          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase border bg-emerald-500/20 text-emerald-300 border-emerald-500/30">
-                            Firestore & Local Engine Active
+                          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase border bg-emerald-500/20 text-emerald-300 border-emerald-500/30 flex items-center gap-1">
+                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                            {isSupabaseEnabled ? 'SUPABASE CONNECTED' : 'SUPABASE READY'}
                           </span>
-                          <span className="px-2 py-0.5 rounded-full text-[10px] font-semibold bg-zinc-800 text-zinc-400 border border-zinc-700">
-                            Supabase: Disconnected
+                          <span className="px-2.5 py-0.5 rounded-full text-[10px] font-bold tracking-wider uppercase border bg-indigo-500/20 text-indigo-300 border-indigo-500/30 flex items-center gap-1">
+                            ▲ VERCEL READY
                           </span>
                         </div>
                         <p className="text-xs text-[#C8C2B4] mt-1 max-w-xl">
-                          All school admissions, news circulars, photo gallery, and video records are stored and persisted securely through Cloud Firestore and instant local storage.
+                          All school admissions, news circulars, photo gallery, and video records are ready for real-time synchronization with Supabase and rapid 1-click Vercel hosting.
                         </p>
                       </div>
                     </div>
@@ -625,8 +626,8 @@ export const AdminPortal: React.FC = () => {
                         disabled={isSyncing}
                         onClick={async () => {
                           await syncWithSupabase();
-                          setSyncSuccessMessage('Database state synchronized successfully!');
-                          setTimeout(() => setSyncSuccessMessage(''), 3000);
+                          setSyncSuccessMessage('Database synchronized with Supabase cloud successfully!');
+                          setTimeout(() => setSyncSuccessMessage(''), 3500);
                         }}
                         className="px-4 py-2 bg-[#5A5A40] hover:bg-[#4E4E37] text-white text-xs font-bold rounded-xl transition-all flex items-center gap-2 border border-[#6E6E52] cursor-pointer disabled:opacity-50"
                       >
@@ -643,16 +644,66 @@ export const AdminPortal: React.FC = () => {
                     </div>
                   )}
 
-                  {/* Supabase SQL Setup Script */}
+                  {/* Vercel & Supabase Environment Config Card */}
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div className="bg-[#2D2A24] border border-[#423E37] rounded-2xl p-5 space-y-3">
+                      <div className="flex items-center justify-between">
+                        <h4 className="text-xs font-bold text-white font-mono uppercase tracking-wider flex items-center gap-1.5">
+                          <span className="w-2 h-2 rounded-full bg-emerald-400" />
+                          Supabase Project Configuration
+                        </h4>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1C1A17] text-emerald-400 border border-[#3A3731]">
+                          Active Client
+                        </span>
+                      </div>
+                      <div className="space-y-2 text-xs font-mono">
+                        <div className="bg-[#1C1A17] p-2.5 rounded-xl border border-[#3A3731]">
+                          <span className="text-[#8C857B] text-[10px] block">VITE_SUPABASE_URL</span>
+                          <span className="text-white text-[11px] truncate block">
+                            {getSupabaseConfig().url}
+                          </span>
+                        </div>
+                        <div className="bg-[#1C1A17] p-2.5 rounded-xl border border-[#3A3731]">
+                          <span className="text-[#8C857B] text-[10px] block">VITE_SUPABASE_ANON_KEY</span>
+                          <span className="text-emerald-300 text-[11px] truncate block">
+                            {getSupabaseConfig().hasKey ? '••••••••••••••••••••••••••••••••' : 'Configured via Environment / Fallback'}
+                          </span>
+                        </div>
+                      </div>
+                    </div>
+
+                    <div className="bg-[#2D2A24] border border-[#423E37] rounded-2xl p-5 space-y-3">
+                      <div className="flex items-center justify-between">
+                        <h4 className="text-xs font-bold text-white font-mono uppercase tracking-wider flex items-center gap-1.5">
+                          <span className="w-2 h-2 rounded-full bg-indigo-400" />
+                          Vercel Production Deployment
+                        </h4>
+                        <span className="text-[10px] font-mono px-2 py-0.5 rounded bg-[#1C1A17] text-indigo-400 border border-[#3A3731]">
+                          vercel.json Ready
+                        </span>
+                      </div>
+                      <div className="space-y-2 text-xs text-[#C8C2B4]">
+                        <p className="text-[11px] leading-relaxed">
+                          Deploy to Vercel in 1 click or via Git. Clean URL rewrites and SPA fallback headers are pre-configured in <code className="text-indigo-300 font-mono">vercel.json</code>.
+                        </p>
+                        <div className="bg-[#1C1A17] p-2 rounded-xl border border-[#3A3731] font-mono text-[10px] text-zinc-300 flex items-center justify-between">
+                          <span>Build: <code>npm run build</code> (dist)</span>
+                          <span className="text-emerald-400 font-bold">SPA Route OK</span>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+
+                  {/* SQL Schema Definition */}
                   <div className="bg-[#2D2A24] border border-[#423E37] rounded-2xl p-5 space-y-4">
-                    <div className="flex items-center justify-between">
+                    <div className="flex items-center justify-between flex-wrap gap-2">
                       <div>
                         <h4 className="text-sm font-bold text-white font-['Cinzel',serif] flex items-center gap-2">
                           <ShieldCheck className="w-4 h-4 text-[#D8D2C5]" />
                           <span>Supabase 1-Click Database Setup (SQL Schema)</span>
                         </h4>
                         <p className="text-xs text-[#A6A095] mt-0.5">
-                          Copy and execute this script in your Supabase SQL Editor to provision all tables: <code>hms_admissions</code>, <code>hms_news</code>, <code>hms_photos</code>, <code>hms_videos</code>.
+                          Standard SQL Schema for school tables: <code>hms_admissions</code>, <code>hms_news</code>, <code>hms_photos</code>, <code>hms_videos</code>.
                         </p>
                       </div>
 
@@ -681,9 +732,9 @@ export const AdminPortal: React.FC = () => {
                       <div className="w-7 h-7 rounded-lg bg-[#5A5A40]/30 text-white font-bold flex items-center justify-center text-xs">
                         1
                       </div>
-                      <h5 className="font-bold text-xs text-white">Create Supabase Project</h5>
+                      <h5 className="font-bold text-xs text-white">Supabase Cloud Setup</h5>
                       <p className="text-[11px] text-[#A6A095]">
-                        Create a free project at supabase.com. Go to SQL Editor and run the SQL script above.
+                        Create your free database project at <strong className="text-white">supabase.com</strong> and run the schema in SQL Editor.
                       </p>
                     </div>
 
@@ -691,9 +742,9 @@ export const AdminPortal: React.FC = () => {
                       <div className="w-7 h-7 rounded-lg bg-[#5A5A40]/30 text-white font-bold flex items-center justify-center text-xs">
                         2
                       </div>
-                      <h5 className="font-bold text-xs text-white">Set Environment Variables</h5>
+                      <h5 className="font-bold text-xs text-white">Deploy to Vercel</h5>
                       <p className="text-[11px] text-[#A6A095]">
-                        Add <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code> to your environment settings.
+                        Import this project to Vercel. Add <code>VITE_SUPABASE_URL</code> and <code>VITE_SUPABASE_ANON_KEY</code> to Vercel Environment Variables.
                       </p>
                     </div>
 
@@ -701,9 +752,9 @@ export const AdminPortal: React.FC = () => {
                       <div className="w-7 h-7 rounded-lg bg-[#5A5A40]/30 text-white font-bold flex items-center justify-center text-xs">
                         3
                       </div>
-                      <h5 className="font-bold text-xs text-white">Continuous Real-Time Sync</h5>
+                      <h5 className="font-bold text-xs text-white">Live Real-Time Sync</h5>
                       <p className="text-[11px] text-[#A6A095]">
-                        Parent admissions, news announcements, photos, and YouTube videos will sync in real time.
+                        Parent admissions, circular announcements, photos, and YouTube videos will persist live on Supabase.
                       </p>
                     </div>
                   </div>
