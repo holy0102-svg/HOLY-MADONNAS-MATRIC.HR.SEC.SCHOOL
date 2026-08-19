@@ -35,6 +35,10 @@ export const AIAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
 
   const quickQuestions = [
     {
+      en: 'How to verify student identity & Aadhaar e-KYC?',
+      ta: 'மாணவர் அடையாளம் மற்றும் ஆதார் e-KYC சரிபார்ப்பது எப்படி?'
+    },
+    {
       en: 'How to apply for 2026–27 Admissions?',
       ta: '2026–27 சேர்க்கைக்கு எவ்வாறு விண்ணப்பிப்பது?'
     },
@@ -70,10 +74,14 @@ export const AIAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
       let botResponse = '';
       const q = query.toLowerCase();
 
-      if (q.includes('admission') || q.includes('apply') || q.includes('சேர்க்கை') || q.includes('விண்ணப்ப')) {
+      if (q.includes('verif') || q.includes('aadhaar') || q.includes('kyc') || q.includes('otp') || q.includes('சரிபார்ப்பு') || q.includes('ஆதார்')) {
         botResponse = language === 'ta'
-          ? 'ஹோலி மடோனாஸ் பள்ளியில் Pre-KG முதல் 12-ஆம் வகுப்பு வரை சேர்க்கை நடைபெறுகிறது. நமது தளத்தில் உள்ள "Apply Online" பொத்தானை அழுத்தி 3 நிமிடங்களில் விண்ணப்பிக்கலாம். அல்லது அலுவலகத்தை +91 96299 78066 எண்ணில் தொடர்புகொள்ளலாம்.'
-          : 'Admissions are open for Pre-KG through Class XII for the 2026–27 academic year! You can apply online directly using the "Apply Online" button or call +91 96299 78066 for immediate admission assistance.';
+          ? 'மாணவர் சரிபார்ப்பு (Student Verification): எங்களின் பெற்றோர் சேவை தளத்தில் (Student Portal) உங்கள் சேர்க்கை எண் (Admission No), பிறந்த தேதி மற்றும் பதிவு செய்யப்பட்ட அலைபேசி எண்ணை உள்ளிட்டு OTP மூலம் சரிபார்க்கலாம். UIDAI வழிகாட்டுதலின்படி, அசல் ஆதார் எண்கள் சேகரிக்கப்படாது; அங்கீகரிக்கப்பட்ட e-KYC மறைகுறியீட்டு Reference Token மட்டுமே சேமிக்கப்படுகிறது.'
+          : 'Student & Aadhaar Verification: You can verify enrollment via our Student & Parent Portal using Admission Number, Date of Birth, and Registered Mobile OTP. In strict compliance with UIDAI regulations & DPDP Act 2023, raw Aadhaar numbers are never collected—only authorized e-KYC cryptographic verification reference tokens are recorded.';
+      } else if (q.includes('admission') || q.includes('apply') || q.includes('சேர்க்கை') || q.includes('விண்ணப்ப')) {
+        botResponse = language === 'ta'
+          ? 'ஹோலி மடோனாஸ் பள்ளியில் Pre-KG முதல் 12-ஆம் வகுப்பு வரை சேர்க்கை நடைபெறுகிறது. நமது தளத்தில் உள்ள "Apply Online" பொத்தானை அழுத்தி விண்ணப்பிக்கலாம். அல்லது பள்ளி அலுவலகம்/வாட்ஸ்அப் +91 99434 61787 அல்லது முதல்வர் நேரடி எண் +91 96299 78066 எண்ணில் தொடர்புகொள்ளலாம்.'
+          : 'Admissions are open for Pre-KG through Class XII for the 2026–27 academic year! You can apply online directly using the "Apply Online" button, WhatsApp/Call our school desk at +91 99434 61787, or contact the Principal’s office at +91 96299 78066.';
       } else if (q.includes('bus') || q.includes('transport') || q.includes('route') || q.includes('பேருந்து') || q.includes('வழித்தடம்')) {
         botResponse = language === 'ta'
           ? 'பள்ளியின் GPS பொருத்தப்பட்ட பேருந்துகள் லாலாபேட்டை, குளித்தலை, மாயனூர், பெட்டவாய்த்தலை, கிருஷ்ணராயபுரம் ஆகிய வழித்தடங்களில் காலை 7:30 மணி முதல் இயக்கப்படுகின்றன.'
@@ -92,8 +100,8 @@ export const AIAssistantModal: React.FC<{ isOpen: boolean; onClose: () => void }
           : 'For Higher Secondary (Classes XI & XII): Group 1 (Maths, Physics, Chemistry, Biology - NEET Track), Group 2 (Maths, Physics, Chemistry, Computer Science), and Group 3 (Commerce, Accountancy, Economics, Business Maths).';
       } else {
         botResponse = language === 'ta'
-          ? `ஹோலி மடோனாஸ் மெட்ரிகுலேஷன் மேல்நிலைப் பள்ளி, லாலாபேட்டை. உங்கள் கேள்விக்கு மேலும் தெளிவான விளக்கம் பெற எங்கள் உதவி மையத்தை +91 96299 78066 எண்ணில் அழைக்கவும்.`
-          : `Holy Madonnas Matriculation Higher Secondary School, Lalapet. For specialized queries or campus appointments, please contact our administrative desk at +91 96299 78066.`;
+          ? `ஹோலி மடோனாஸ் மெட்ரிகுலேஷன் மேல்நிலைப் பள்ளி, லாலாபேட்டை. உங்கள் கேள்விக்கு மேலும் தெளிவான விளக்கம் பெற எங்கள் உதவி மையம்/வாட்ஸ்அப் +91 99434 61787 அல்லது முதல்வர் எண் +91 96299 78066 அழைக்கவும்.`
+          : `Holy Madonnas Matriculation Higher Secondary School, Lalapet. For specialized queries or campus appointments, please contact our administrative helpline/WhatsApp at +91 99434 61787 or Principal's desk at +91 96299 78066.`;
       }
 
       const aiMsg: ChatMessage = {

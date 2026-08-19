@@ -37,6 +37,8 @@ export const AdminPortal: React.FC = () => {
     closeAdminModal, 
     applications, 
     updateApplicationStatus, 
+    verifications,
+    updateVerificationStatus,
     addNewsItem, 
     deleteNewsItem,
     news,
@@ -60,7 +62,11 @@ export const AdminPortal: React.FC = () => {
   const [syncSuccessMessage, setSyncSuccessMessage] = useState('');
 
   // Active Admin Sub-tab
-  const [adminTab, setAdminTab] = useState<'applications' | 'news' | 'photos' | 'videos' | 'database' | 'sql_editor'>('applications');
+  const [adminTab, setAdminTab] = useState<'applications' | 'verifications' | 'news' | 'photos' | 'videos' | 'database' | 'sql_editor'>('applications');
+
+  // Verification filter and search state
+  const [verificationFilter, setVerificationFilter] = useState<'ALL' | 'Verified' | 'Pending' | 'Failed'>('ALL');
+  const [verificationSearch, setVerificationSearch] = useState('');
 
   // New News form state
   const [newsTitle, setNewsTitle] = useState('');
@@ -259,6 +265,18 @@ export const AdminPortal: React.FC = () => {
                 </button>
 
                 <button
+                  onClick={() => setAdminTab('verifications')}
+                  className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
+                    adminTab === 'verifications'
+                      ? 'bg-[#5A5A40] text-white shadow-sm'
+                      : 'bg-[#2D2A24] text-[#C8C2B4] hover:bg-[#38342D]'
+                  }`}
+                >
+                  <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
+                  <span>Student Verifications ({verifications.length})</span>
+                </button>
+
+                <button
                   onClick={() => setAdminTab('news')}
                   className={`flex items-center gap-1.5 px-3.5 py-1.5 rounded-xl text-xs font-bold transition-all cursor-pointer ${
                     adminTab === 'news'
@@ -393,6 +411,220 @@ export const AdminPortal: React.FC = () => {
                             </td>
                           </tr>
                         ))}
+                      </tbody>
+                    </table>
+                  </div>
+                </div>
+              )}
+
+              {/* TAB 1.5: STUDENT VERIFICATIONS (OTP & UIDAI e-KYC) */}
+              {adminTab === 'verifications' && (
+                <div className="space-y-5">
+                  <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+                    <div>
+                      <h4 className="text-base font-bold font-['Cinzel',serif] text-[#FCFAF7] flex items-center gap-2">
+                        <ShieldCheck className="w-5 h-5 text-emerald-400" />
+                        <span>Student Verification & UIDAI e-KYC Records</span>
+                      </h4>
+                      <p className="text-xs text-[#A6A095]">
+                        Monitor OTP validations and UIDAI-authorized cryptographic e-KYC reference statuses
+                      </p>
+                    </div>
+
+                    <div className="flex items-center gap-2">
+                      <button
+                        onClick={() => {
+                          const csvRows = [
+                            ['Admission No', 'Student Name', 'Standard', 'DOB', 'Parent Name', 'Mobile', 'Overall Status', 'OTP Verified', 'Aadhaar e-KYC Status', 'UIDAI Ref ID', 'Verified At'],
+                            ...verifications.map(v => [
+                              v.admissionNumber,
+                              `"${v.studentName}"`,
+                              v.standard,
+                              v.dob,
+                              `"${v.parentName}"`,
+                              v.registeredMobile,
+                              v.status,
+                              v.isOtpVerified ? 'Yes' : 'No',
+                              v.aadhaarKycStatus,
+                              v.aadhaarKycRefId || 'N/A',
+                              v.verifiedAt || 'N/A'
+                            ])
+                          ];
+                          const blob = new Blob([csvRows.map(e => e.join(',')).join('\n')], { type: 'text/csv;charset=utf-8;' });
+                          const url = URL.createObjectURL(blob);
+                          const link = document.createElement('a');
+                          link.setAttribute('href', url);
+                          link.setAttribute('download', `hms_verifications_${new Date().toISOString().slice(0, 10)}.csv`);
+                          document.body.appendChild(link);
+                          link.click();
+                          document.body.removeChild(link);
+                        }}
+                        className="px-3.5 py-1.5 bg-[#2D2A24] hover:bg-[#38342D] text-[#D8D2C5] rounded-xl text-xs font-bold border border-[#423E37] flex items-center gap-1.5 cursor-pointer"
+                      >
+                        <Download className="w-3.5 h-3.5" />
+                        <span>Export CSV</span>
+                      </button>
+                    </div>
+                  </div>
+
+                  {/* DPDP Compliance & UIDAI Architecture Notice */}
+                  <div className="p-3.5 bg-[#5A5A40]/20 border border-[#5A5A40]/40 rounded-2xl flex items-start gap-2.5 text-xs text-[#D8D2C5]">
+                    <ShieldCheck className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                    <div>
+                      <span className="font-bold text-white block">DPDP Act 2023 & UIDAI Authorized Gateway Compliance:</span>
+                      <span>The school database strictly stores ZERO 12-digit Aadhaar numbers. Only cryptographic token references (e.g. <code>UIDAI-EK-2026-XXXX</code>) are retained post e-KYC completion.</span>
+                    </div>
+                  </div>
+
+                  {/* Filter & Search Bar */}
+                  <div className="flex flex-col sm:flex-row items-center justify-between gap-3 bg-[#1C1A17] p-3 rounded-2xl border border-[#3A3731]">
+                    <div className="flex items-center gap-1.5 overflow-x-auto w-full sm:w-auto">
+                      {(['ALL', 'Verified', 'Pending', 'Failed'] as const).map((filter) => {
+                        const count = filter === 'ALL' 
+                          ? verifications.length 
+                          : verifications.filter(v => v.status === filter).length;
+                        return (
+                          <button
+                            key={filter}
+                            onClick={() => setVerificationFilter(filter)}
+                            className={`px-3 py-1 rounded-xl text-xs font-bold cursor-pointer transition-all ${
+                              verificationFilter === filter
+                                ? filter === 'Verified'
+                                  ? 'bg-emerald-600 text-white'
+                                  : filter === 'Failed'
+                                  ? 'bg-rose-600 text-white'
+                                  : filter === 'Pending'
+                                  ? 'bg-amber-600 text-white'
+                                  : 'bg-[#5A5A40] text-white'
+                                : 'bg-[#2D2A24] text-[#C8C2B4] hover:bg-[#38342D]'
+                            }`}
+                          >
+                            {filter} ({count})
+                          </button>
+                        );
+                      })}
+                    </div>
+
+                    <div className="relative w-full sm:w-64">
+                      <Search className="w-3.5 h-3.5 text-[#8C857B] absolute left-3 top-2.5" />
+                      <input
+                        type="text"
+                        placeholder="Search student, adm no, phone..."
+                        value={verificationSearch}
+                        onChange={(e) => setVerificationSearch(e.target.value)}
+                        className="w-full pl-8 pr-3 py-1.5 bg-[#2D2A24] border border-[#423E37] rounded-xl text-xs text-white placeholder-[#8C857B] outline-none focus:border-[#5A5A40]"
+                      />
+                    </div>
+                  </div>
+
+                  {/* Verifications Table */}
+                  <div className="overflow-x-auto rounded-2xl border border-[#3A3731] bg-[#24221E]">
+                    <table className="w-full text-left text-xs text-[#D8D2C5]">
+                      <thead className="bg-[#1C1A17] text-[#A6A095] uppercase text-[10px] font-bold border-b border-[#3A3731]">
+                        <tr>
+                          <th className="p-3.5">Admission / App No</th>
+                          <th className="p-3.5">Student Name</th>
+                          <th className="p-3.5">Standard</th>
+                          <th className="p-3.5">DOB</th>
+                          <th className="p-3.5">Mobile</th>
+                          <th className="p-3.5">OTP Status</th>
+                          <th className="p-3.5">Aadhaar e-KYC Status</th>
+                          <th className="p-3.5">Overall Status</th>
+                          <th className="p-3.5 text-right">Admin Actions</th>
+                        </tr>
+                      </thead>
+                      <tbody className="divide-y divide-[#3A3731]">
+                        {verifications
+                          .filter(v => {
+                            if (verificationFilter !== 'ALL' && v.status !== verificationFilter) return false;
+                            if (verificationSearch.trim()) {
+                              const q = verificationSearch.toLowerCase();
+                              return (
+                                v.studentName.toLowerCase().includes(q) ||
+                                v.admissionNumber.toLowerCase().includes(q) ||
+                                v.registeredMobile.includes(q) ||
+                                v.parentName.toLowerCase().includes(q)
+                              );
+                            }
+                            return true;
+                          })
+                          .map((record) => (
+                            <tr key={record.id} className="hover:bg-[#2D2A24] transition-colors">
+                              <td className="p-3.5 font-mono text-[#FCFAF7] font-bold">{record.admissionNumber}</td>
+                              <td className="p-3.5">
+                                <span className="font-semibold text-white block">{record.studentName}</span>
+                                <span className="text-[10px] text-[#8C857B]">Parent: {record.parentName}</span>
+                              </td>
+                              <td className="p-3.5">{record.standard}</td>
+                              <td className="p-3.5 font-mono text-[#A6A095]">{record.dob}</td>
+                              <td className="p-3.5 font-mono text-[#D8D2C5]">{record.registeredMobile}</td>
+                              <td className="p-3.5">
+                                {record.isOtpVerified ? (
+                                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-emerald-400">
+                                    <CheckCircle2 className="w-3.5 h-3.5" />
+                                    <span>Verified</span>
+                                  </span>
+                                ) : (
+                                  <span className="inline-flex items-center gap-1 text-[11px] font-bold text-amber-400">
+                                    <Clock className="w-3.5 h-3.5" />
+                                    <span>Pending</span>
+                                  </span>
+                                )}
+                              </td>
+                              <td className="p-3.5">
+                                <div>
+                                  <span className={`inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[10px] font-bold ${
+                                    record.aadhaarKycStatus === 'Verified'
+                                      ? 'bg-emerald-950 text-emerald-300 border border-emerald-700'
+                                      : record.aadhaarKycStatus === 'Failed'
+                                      ? 'bg-rose-950 text-rose-300 border border-rose-700'
+                                      : 'bg-amber-950 text-amber-300 border border-amber-700'
+                                  }`}>
+                                    {record.aadhaarKycStatus === 'Verified' ? '✅ Verified' : record.aadhaarKycStatus === 'Failed' ? '❌ Failed' : '⏳ Pending'}
+                                  </span>
+                                  {record.aadhaarKycRefId && (
+                                    <span className="block font-mono text-[9px] text-[#8C857B] mt-0.5">
+                                      Ref: {record.aadhaarKycRefId}
+                                    </span>
+                                  )}
+                                </div>
+                              </td>
+                              <td className="p-3.5">
+                                <span className={`px-2.5 py-1 rounded-full text-[10px] font-bold inline-block ${
+                                  record.status === 'Verified'
+                                    ? 'bg-emerald-600/30 text-emerald-300 border border-emerald-600'
+                                    : record.status === 'Failed'
+                                    ? 'bg-rose-600/30 text-rose-300 border border-rose-600'
+                                    : 'bg-amber-600/30 text-amber-300 border border-amber-600'
+                                }`}>
+                                  {record.status}
+                                </span>
+                              </td>
+                              <td className="p-3.5 text-right space-x-1 whitespace-nowrap">
+                                <button
+                                  onClick={() => updateVerificationStatus(record.id, 'Verified')}
+                                  title="Approve verification & set Verified status"
+                                  className="px-2.5 py-1 bg-emerald-700 hover:bg-emerald-600 text-white rounded-lg text-[10px] font-semibold transition-colors cursor-pointer border border-emerald-600"
+                                >
+                                  Mark Verified
+                                </button>
+                                <button
+                                  onClick={() => updateVerificationStatus(record.id, 'Pending')}
+                                  title="Set back to Pending status"
+                                  className="px-2.5 py-1 bg-[#38342D] hover:bg-[#443F37] text-[#D8D2C5] rounded-lg text-[10px] font-semibold transition-colors cursor-pointer border border-[#4A4740]"
+                                >
+                                  Pending
+                                </button>
+                                <button
+                                  onClick={() => updateVerificationStatus(record.id, 'Failed')}
+                                  title="Mark verification as Failed"
+                                  className="px-2.5 py-1 bg-rose-950/80 hover:bg-rose-900 text-rose-300 rounded-lg text-[10px] font-semibold transition-colors cursor-pointer border border-rose-800"
+                                >
+                                  Failed
+                                </button>
+                              </td>
+                            </tr>
+                          ))}
                       </tbody>
                     </table>
                   </div>

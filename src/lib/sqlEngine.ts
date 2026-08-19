@@ -213,15 +213,84 @@ const databaseStore: Record<string, Record<string, any>[]> = {
       timestamp: '2026-08-18 07:05:00',
       status: 'SUCCESS'
     }
+  ],
+  student_verifications: [
+    {
+      id: 'verify-001',
+      admission_number: 'HMM-2026-001',
+      student_name: 'A. Joseph Daniel',
+      dob: '2019-05-14',
+      standard: 'Class I',
+      parent_name: 'Mr. P. Antonysamy',
+      registered_mobile: '+91 94432 55101',
+      status: 'Verified',
+      is_otp_verified: true,
+      aadhaar_kyc_status: 'Verified',
+      aadhaar_kyc_ref_id: 'UIDAI-EK-2026-8942A',
+      consent_given: true,
+      verified_at: '2026-08-15 10:47 AM'
+    },
+    {
+      id: 'verify-002',
+      admission_number: 'HMM-2026-002',
+      student_name: 'S. Nithya Shree',
+      dob: '2015-11-22',
+      standard: 'Class VI',
+      parent_name: 'Mrs. R. Sangeetha',
+      registered_mobile: '+91 98422 11980',
+      status: 'Verified',
+      is_otp_verified: true,
+      aadhaar_kyc_status: 'Verified',
+      aadhaar_kyc_ref_id: 'UIDAI-EK-2026-3391B',
+      consent_given: true,
+      verified_at: '2026-08-16 02:14 PM'
+    },
+    {
+      id: 'verify-003',
+      admission_number: 'HMM-2026-003',
+      student_name: 'M. Kavin Prasad',
+      dob: '2012-03-08',
+      standard: 'Class IX',
+      parent_name: 'Mr. K. Manikandan',
+      registered_mobile: '+91 97880 44321',
+      status: 'Pending',
+      is_otp_verified: true,
+      aadhaar_kyc_status: 'Pending',
+      aadhaar_kyc_ref_id: null,
+      consent_given: true,
+      verified_at: null
+    }
   ]
 };
 
 // Aliases for convenience
 databaseStore['hms_admissions'] = databaseStore['admissions'];
 databaseStore['circulars'] = databaseStore['news_circulars'];
+databaseStore['hms_verifications'] = databaseStore['student_verifications'];
+databaseStore['verifications'] = databaseStore['student_verifications'];
 
 export const getAvailableTables = (): TableSchema[] => {
   return [
+    {
+      name: 'student_verifications',
+      description: 'Student & Parent UIDAI-compliant e-KYC Verification records (Zero raw Aadhaar stored)',
+      rowCount: databaseStore['student_verifications']?.length || 0,
+      columns: [
+        { name: 'id', type: 'VARCHAR(64)', isPrimary: true, nullable: false },
+        { name: 'admission_number', type: 'VARCHAR(32)', nullable: false },
+        { name: 'student_name', type: 'VARCHAR(128)', nullable: false },
+        { name: 'dob', type: 'DATE', nullable: false },
+        { name: 'standard', type: 'VARCHAR(32)', nullable: false },
+        { name: 'parent_name', type: 'VARCHAR(128)', nullable: false },
+        { name: 'registered_mobile', type: 'VARCHAR(24)', nullable: false },
+        { name: 'status', type: 'VARCHAR(24)', nullable: false },
+        { name: 'is_otp_verified', type: 'BOOLEAN', nullable: false },
+        { name: 'aadhaar_kyc_status', type: 'VARCHAR(24)', nullable: false },
+        { name: 'aadhaar_kyc_ref_id', type: 'VARCHAR(64)', nullable: true },
+        { name: 'consent_given', type: 'BOOLEAN', nullable: false },
+        { name: 'verified_at', type: 'TIMESTAMP', nullable: true }
+      ]
+    },
     {
       name: 'admissions',
       description: 'Online student application submissions (Pre-KG to Std XII)',
@@ -687,6 +756,10 @@ export const sampleSqlSnippets = [
   {
     title: 'Annual Fee Schedule Summary',
     sql: `SELECT class_group, term_1_inr, term_2_inr, term_3_inr, annual_total_inr\nFROM fee_structure\nORDER BY annual_total_inr ASC;`
+  },
+  {
+    title: 'Student e-KYC Verification Records',
+    sql: `SELECT admission_number, student_name, standard, registered_mobile, status, aadhaar_kyc_status, aadhaar_kyc_ref_id\nFROM student_verifications\nORDER BY admission_number ASC;`
   },
   {
     title: 'Insert New Admission Application',

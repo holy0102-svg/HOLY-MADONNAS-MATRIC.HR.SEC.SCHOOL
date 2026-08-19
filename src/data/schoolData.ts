@@ -647,3 +647,74 @@ export const examTimetableSample: ExamScheduleItem[] = [
     ]
   }
 ];
+
+export const initialStudentVerifications: import('../types').StudentVerificationRecord[] = [
+  {
+    id: 'verify-001',
+    admissionNumber: 'HMM-2026-001',
+    studentName: 'A. Joseph Daniel',
+    dob: '2019-05-14',
+    standard: 'Class I',
+    parentName: 'Mr. P. Antonysamy',
+    registeredMobile: '+91 94432 55101',
+    status: 'Verified',
+    isOtpVerified: true,
+    aadhaarKycStatus: 'Verified',
+    aadhaarKycRefId: 'UIDAI-EK-2026-8942A',
+    consentGiven: true,
+    consentTimestamp: '2026-08-15 10:45 AM',
+    verifiedAt: '2026-08-15 10:47 AM',
+    academicYear: '2026–2027',
+    notes: 'UIDAI authorized e-KYC provider authentication successful.'
+  },
+  {
+    id: 'verify-002',
+    admissionNumber: 'HMM-2026-002',
+    studentName: 'S. Nithya Shree',
+    dob: '2015-11-22',
+    standard: 'Class VI',
+    parentName: 'Mrs. R. Sangeetha',
+    registeredMobile: '+91 98422 11980',
+    status: 'Verified',
+    isOtpVerified: true,
+    aadhaarKycStatus: 'Verified',
+    aadhaarKycRefId: 'UIDAI-EK-2026-3391B',
+    consentGiven: true,
+    consentTimestamp: '2026-08-16 02:10 PM',
+    verifiedAt: '2026-08-16 02:14 PM',
+    academicYear: '2026–2027',
+    notes: 'OTP e-KYC authentication successful. Cryptographic reference stored.'
+  },
+  {
+    id: 'verify-003',
+    admissionNumber: 'HMM-2026-003',
+    studentName: 'M. Kavin Prasad',
+    dob: '2012-03-08',
+    standard: 'Class IX',
+    parentName: 'Mr. K. Manikandan',
+    registeredMobile: '+91 97880 44321',
+    status: 'Pending',
+    isOtpVerified: true,
+    aadhaarKycStatus: 'Pending',
+    consentGiven: true,
+    consentTimestamp: '2026-08-18 11:20 AM',
+    academicYear: '2026–2027',
+    notes: 'Mobile OTP verified. Awaiting parent e-KYC completion.'
+  },
+  {
+    id: 'verify-004',
+    admissionNumber: 'HMM-2026-004',
+    studentName: 'R. Deepika',
+    dob: '2010-09-17',
+    standard: 'Class XI - Bio-Maths',
+    parentName: 'Mr. T. Ramakrishnan',
+    registeredMobile: '+91 99434 61787',
+    status: 'Pending',
+    isOtpVerified: false,
+    aadhaarKycStatus: 'Pending',
+    consentGiven: false,
+    academicYear: '2026–2027',
+    notes: 'Enrolled student record; pending parent verification.'
+  }
+];
+

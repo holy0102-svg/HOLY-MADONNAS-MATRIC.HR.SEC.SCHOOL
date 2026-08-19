@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSchool } from '../context/SchoolContext';
 import { SchoolLogo } from './SchoolLogo';
 import { examTimetableSample, schoolBusRoutes } from '../data/schoolData';
+import { StudentVerificationSection } from './StudentVerificationSection';
 import { 
   GraduationCap, 
   Calendar, 
@@ -14,12 +15,13 @@ import {
   FileText, 
   Search, 
   ShieldCheck,
-  AlertCircle
+  AlertCircle,
+  Fingerprint
 } from 'lucide-react';
 
 export const StudentParentPortal: React.FC = () => {
   const { language, t } = useSchool();
-  const [activeTab, setActiveTab] = useState<'timetable' | 'fee' | 'bus' | 'downloads'>('timetable');
+  const [activeTab, setActiveTab] = useState<'verification' | 'timetable' | 'fee' | 'bus' | 'downloads'>('verification');
 
   // Online Fee Demo Simulator state
   const [studentRollNo, setStudentRollNo] = useState('');
@@ -69,6 +71,19 @@ export const StudentParentPortal: React.FC = () => {
 
         {/* Portal Nav Tabs */}
         <div className="flex items-center justify-start lg:justify-center gap-2 overflow-x-auto pb-4 mb-10 scrollbar-none">
+          <button
+            id="portal-tab-verification"
+            onClick={() => setActiveTab('verification')}
+            className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-xs sm:text-sm font-bold transition-all cursor-pointer border ${
+              activeTab === 'verification'
+                ? 'bg-[#5A5A40] text-white border-[#484833] shadow-xs'
+                : 'bg-[#F5F2ED] text-[#3D3A35] border-[#E5E0D8] hover:bg-[#EAE4DC]'
+            }`}
+          >
+            <ShieldCheck className={`w-4 h-4 ${activeTab === 'verification' ? 'text-white' : 'text-[#5A5A40]'}`} />
+            <span>{t.tabVerification || '🛡️ Student Verification (e-KYC)'}</span>
+          </button>
+
           <button
             id="portal-tab-timetable"
             onClick={() => setActiveTab('timetable')}
@@ -125,6 +140,11 @@ export const StudentParentPortal: React.FC = () => {
         {/* Tab Content Display */}
         <div className="bg-white rounded-3xl p-6 sm:p-10 border border-[#E5E0D8] shadow-xs">
           
+          {/* TAB 0: STUDENT VERIFICATION */}
+          {activeTab === 'verification' && (
+            <StudentVerificationSection embeddedInPortal={true} />
+          )}
+
           {/* TAB 1: EXAM TIMETABLES */}
           {activeTab === 'timetable' && (
             <div className="space-y-8 animate-in fade-in duration-200">

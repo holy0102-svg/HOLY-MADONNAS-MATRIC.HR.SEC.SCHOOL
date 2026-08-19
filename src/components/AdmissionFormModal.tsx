@@ -309,7 +309,7 @@ export const AdmissionFormModal: React.FC = () => {
                       id="input-mobile-number"
                       type="tel"
                       required
-                      placeholder="+91 94432 XXXXX"
+                      placeholder="+91 99434 XXXXX"
                       value={mobileNumber}
                       onChange={(e) => setMobileNumber(e.target.value)}
                       className="w-full px-3.5 py-2.5 rounded-xl border border-[#D5CEC2] bg-white focus:border-[#5A5A40] focus:ring-2 focus:ring-[#5A5A40]/20 text-sm outline-none transition-all text-[#2C2A26]"

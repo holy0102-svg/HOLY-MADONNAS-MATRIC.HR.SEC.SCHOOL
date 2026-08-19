@@ -148,3 +148,24 @@ export interface ExamScheduleItem {
     portion: string;
   }[];
 }
+
+export interface StudentVerificationRecord {
+  id: string;
+  admissionNumber: string;
+  studentName: string;
+  dob: string;
+  standard: string;
+  parentName: string;
+  registeredMobile: string;
+  status: 'Verified' | 'Pending' | 'Failed';
+  otpCode?: string;
+  otpExpiresAt?: number;
+  isOtpVerified: boolean;
+  aadhaarKycStatus: 'Verified' | 'Pending' | 'Failed';
+  aadhaarKycRefId?: string;
+  consentGiven: boolean;
+  consentTimestamp?: string;
+  verifiedAt?: string;
+  academicYear?: string;
+  notes?: string;
+}

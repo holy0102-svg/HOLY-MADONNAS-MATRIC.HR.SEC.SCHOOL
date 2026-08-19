@@ -24,7 +24,7 @@ export const translations = {
     adminLogin: 'Admin Portal',
     
     // Quick Top Bar
-    callUs: 'Helpline: +91 96299 78066',
+    callUs: 'Helpline: +91 99434 61787',
     emailUs: 'holylalapet123@gmail.com',
     officeHours: 'Mon - Sat: 8:30 AM - 4:30 PM',
     
@@ -169,18 +169,33 @@ export const translations = {
     
     // Student Portal Preview
     portalHeading: 'Student & Parent Utilities Portal',
-    portalSubHeading: 'Quick access to exam schedules, fee payment info, school bus routes, and circular downloads',
+    portalSubHeading: 'Quick access to student identity verification, exam schedules, fee payment info, school bus routes, and circular downloads',
+    tabVerification: '🛡️ Student Verification (e-KYC)',
     tabTimetable: '📅 Exam Timetable',
     tabFeeInfo: '💳 Fee Structure & Online Pay',
     tabBusRoutes: '🚌 School Bus Routes',
     tabDownloads: '📥 Syllabus & Forms',
+    
+    // Student Verification Specific
+    verifyHeading: 'Official Student & Parent Identity Verification',
+    verifySubHeading: 'Instant OTP Authentication with UIDAI-compliant authorized e-KYC reference token tracking. Zero raw Aadhaar numbers stored.',
+    verifyAdmissionNo: 'Admission / Application Number',
+    verifyDob: 'Date of Birth (DOB)',
+    verifyMobile: 'Registered Mobile Number',
+    btnSendOtp: 'Send Verification OTP',
+    btnVerifyOtp: 'Verify & Authenticate',
+    otpSentNotice: '6-digit verification OTP dispatched via SMS to registered mobile',
+    aadhaarNotice: 'Authorized UIDAI e-KYC reference integration ensures full privacy under DPDP Act 2023. No raw Aadhaar digits are collected or stored.',
+    kycStatusVerified: 'Aadhaar e-KYC Status: ✅ Verified',
+    kycStatusPending: 'Aadhaar e-KYC Status: ⏳ Pending Verification',
+    kycStatusFailed: 'Aadhaar e-KYC Status: ❌ Authentication Failed',
     
     // Contact
     contactHeading: 'Contact School & Location',
     contactSubHeading: 'We are here to answer your queries and welcome you to our Lalapet campus',
     schoolAddressTitle: 'School Address',
     schoolAddress: 'Holy Madonnas Matriculation Higher Secondary School, Main Road, Lalapet, Tamil Nadu - 639105',
-    phoneNumbers: '+91 96299 78066 / +91 94432 18902',
+    phoneNumbers: '+91 99434 61787 (School / WhatsApp) / +91 96299 78066 (Principal)',
     emailAddress: 'holylalapet123@gmail.com',
     officeHoursTitle: 'School & Office Hours',
     officeHoursText: 'Monday to Saturday: 8:30 AM – 4:30 PM (Sundays Closed)',
@@ -257,7 +272,7 @@ export const translations = {
     adminLogin: 'நிர்வாக தளம்',
     
     // Quick Top Bar
-    callUs: 'உதவி எண்: +91 96299 78066',
+    callUs: 'உதவி எண்: +91 99434 61787',
     emailUs: 'holylalapet123@gmail.com',
     officeHours: 'திங்கள் - சனி: காலை 8:30 - மாலை 4:30',
     
@@ -402,18 +417,33 @@ export const translations = {
     
     // Student Portal Preview
     portalHeading: 'மாணவர் & பெற்றோர் சேவைத் தளம்',
-    portalSubHeading: 'தேர்வு அட்டவணை, கட்டண விபரம், பள்ளிப் பேருந்து வழித்தடங்கள் மற்றும் படிவங்கள்',
+    portalSubHeading: 'மாணவர் சரிபார்ப்பு, தேர்வு அட்டவணை, கட்டண விபரம், பள்ளிப் பேருந்து வழித்தடங்கள் மற்றும் படிவங்கள்',
+    tabVerification: '🛡️ மாணவர் சரிபார்ப்பு (e-KYC)',
     tabTimetable: '📅 தேர்வு அட்டவணை',
     tabFeeInfo: '💳 கல்விக் கட்டணம் & செலுத்துதல்',
     tabBusRoutes: '🚌 பேருந்து வழித்தடங்கள்',
     tabDownloads: '📥 பாடத்திட்டம் & படிவங்கள்',
+    
+    // Student Verification Specific
+    verifyHeading: 'அங்கீகரிக்கப்பட்ட மாணவர் & பெற்றோர் சரிபார்ப்பு',
+    verifySubHeading: 'உடனடி OTP மற்றும் UIDAI அங்கீகரிக்கப்பட்ட e-KYC சரிபார்ப்பு. ஆதார் எண்கள் சேமிக்கப்படுவதில்லை; மறைகுறியாக்க குறிப்பு எண் மட்டுமே பராமரிக்கப்படுகிறது.',
+    verifyAdmissionNo: 'சேர்க்கை / விண்ணப்ப எண் (Admission No)',
+    verifyDob: 'பிறந்த தேதி (DOB)',
+    verifyMobile: 'பதிவு செய்யப்பட்ட அலைபேசி எண்',
+    btnSendOtp: 'OTP அனுப்புக',
+    btnVerifyOtp: 'சரிபார்த்து உறுதிசெய்க',
+    otpSentNotice: '6-இலக்க சரிபார்ப்பு OTP உங்கள் அலைபேசிக்கு அனுப்பப்பட்டுள்ளது',
+    aadhaarNotice: 'UIDAI அங்கீகரிக்கப்பட்ட பாதுகாப்பான e-KYC தொழில்நுட்பம் மூலம் சரிபார்க்கப்படுகிறது. உங்கள் தரவு முற்றிலும் பாதுகாப்பானது.',
+    kycStatusVerified: 'ஆதார் e-KYC நிலை: ✅ சரிபார்க்கப்பட்டது (Verified)',
+    kycStatusPending: 'ஆதார் e-KYC நிலை: ⏳ சரிபார்ப்பு நிலுவையில் உள்ளது (Pending)',
+    kycStatusFailed: 'ஆதார் e-KYC நிலை: ❌ சரிபார்ப்பு தோல்வி (Failed)',
     
     // Contact
     contactHeading: 'பள்ளியைத் தொடர்புகொள்ள',
     contactSubHeading: 'எங்களை நேரில் சந்திக்க அல்லது விவரங்களை அறிய அழைக்கவும்',
     schoolAddressTitle: 'பள்ளி முகவரி',
     schoolAddress: 'ஹோலி மடோனாஸ் மெட்ரிகுலேஷன் மேல்நிலைப் பள்ளி, மெயின் ரோடு, லாலாபேட்டை, தமிழ்நாடு - 639105',
-    phoneNumbers: '+91 96299 78066 / +91 94432 18902',
+    phoneNumbers: '+91 99434 61787 (பள்ளி / வாட்ஸ்அப்) / +91 96299 78066 (முதல்வர்)',
     emailAddress: 'holylalapet123@gmail.com',
     officeHoursTitle: 'அலுவலக வேலை நேரம்',
     officeHoursText: 'திங்கள் முதல் சனி வரை: காலை 8:30 முதல் மாலை 4:30 வரை (ஞாயிறு விடுமுறை)',

@@ -37,7 +37,7 @@ export const FloatingActions: React.FC<{ onOpenAI?: () => void }> = ({ onOpenAI 
         {/* WhatsApp Direct Chat */}
         <a
           id="btn-floating-whatsapp"
-          href="https://wa.me/919629978066?text=Hello%20Holy%20Madonnas%20School%2C%20I%20would%20like%20to%20know%20about%20Admissions%202026-27"
+          href="https://wa.me/919943461787?text=Hello%20Holy%20Madonnas%20School%2C%20I%20would%20like%20to%20know%20about%20Admissions%202026-27"
           target="_blank"
           rel="noopener noreferrer"
           className="flex items-center gap-2 bg-[#5A5A40] hover:bg-[#4E4E37] text-white px-4 py-2.5 rounded-full shadow-xl border border-[#6E6E52] hover:scale-105 transition-all text-xs font-bold group"
@@ -72,7 +72,7 @@ export const FloatingActions: React.FC<{ onOpenAI?: () => void }> = ({ onOpenAI 
         
         {/* Call Button */}
         <a
-          href="tel:+919629978066"
+          href="tel:+919943461787"
           className="flex-1 py-2 px-2 rounded-xl bg-[#2D2A24] hover:bg-[#38342D] border border-[#423E37] flex flex-col items-center justify-center text-[10px] font-bold text-[#D8D2C5]"
         >
           <Phone className="w-4 h-4 text-[#C8C2B4] mb-0.5" />
@@ -81,7 +81,7 @@ export const FloatingActions: React.FC<{ onOpenAI?: () => void }> = ({ onOpenAI 
 
         {/* WhatsApp Button */}
         <a
-          href="https://wa.me/919629978066?text=Hello%20Holy%20Madonnas%20School"
+          href="https://wa.me/919943461787?text=Hello%20Holy%20Madonnas%20School"
           target="_blank"
           rel="noopener noreferrer"
           className="flex-1 py-2 px-2 rounded-xl bg-[#5A5A40] hover:bg-[#4E4E37] border border-[#6E6E52] flex flex-col items-center justify-center text-[10px] font-bold text-white shadow-sm"

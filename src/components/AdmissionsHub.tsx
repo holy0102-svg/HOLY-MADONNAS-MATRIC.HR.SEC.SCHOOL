@@ -248,9 +248,9 @@ export const AdmissionsHub: React.FC = () => {
 
             <div className="mt-6 pt-4 border-t border-[#E5E0D8] flex items-center justify-between text-xs text-[#8A847C]">
               <span>{language === 'ta' ? 'உதவிக்கு அலுவலகத்தை அழைக்கவும்' : 'For admission inquiries & fee details:'}</span>
-              <a href="tel:+919629978066" className="font-bold text-[#5A5A40] hover:text-[#2C2A26] flex items-center gap-1">
+              <a href="tel:+919943461787" className="font-bold text-[#5A5A40] hover:text-[#2C2A26] flex items-center gap-1">
                 <PhoneCall className="w-3.5 h-3.5" />
-                <span>+91 96299 78066</span>
+                <span>+91 99434 61787</span>
               </a>
             </div>
           </div>

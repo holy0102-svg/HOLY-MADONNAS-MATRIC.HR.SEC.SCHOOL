@@ -18,13 +18,22 @@ import { AnnouncementPopup } from './components/AnnouncementPopup';
 import { AdmissionFormModal } from './components/AdmissionFormModal';
 import { AdminPortal } from './components/AdminPortal';
 import { AIAssistantModal } from './components/AIAssistantModal';
+import { SupabaseSqlEditor } from './components/SupabaseSqlEditor';
 import { Footer } from './components/Footer';
 import { DynamicSEOHead } from './components/DynamicSEOHead';
 import { SEOMetaInspector } from './components/SEOMetaInspector';
 import { SectionType } from './utils/seoMeta';
 
 const SchoolApp: React.FC = () => {
-  const { isSEOInspectorOpen, closeSEOInspector, isAIAssistantOpen, closeAIAssistant, openAIAssistant } = useSchool();
+  const { 
+    isSEOInspectorOpen, 
+    closeSEOInspector, 
+    isAIAssistantOpen, 
+    closeAIAssistant, 
+    openAIAssistant,
+    isSqlEditorOpen,
+    closeSqlEditor
+  } = useSchool();
   const [activeSection, setActiveSection] = useState<SectionType>('home');
 
   return (
@@ -101,6 +110,15 @@ const SchoolApp: React.FC = () => {
         isOpen={isSEOInspectorOpen}
         onClose={closeSEOInspector}
       />
+
+      {/* 23. Direct Supabase Cloud SQL Editor & Studio Modal */}
+      {isSqlEditorOpen && (
+        <div className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-2 sm:p-4 overflow-y-auto">
+          <div className="w-full max-w-6xl h-[90vh] bg-[#121210] rounded-3xl border border-[#2B2925] shadow-2xl overflow-hidden flex flex-col">
+            <SupabaseSqlEditor onClose={closeSqlEditor} />
+          </div>
+        </div>
+      )}
     </div>
   );
 };

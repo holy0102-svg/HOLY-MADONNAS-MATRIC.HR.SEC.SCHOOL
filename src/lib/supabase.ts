@@ -467,11 +467,33 @@ CREATE TABLE IF NOT EXISTS public.hms_videos (
   created_at TIMESTAMPTZ DEFAULT NOW()
 );
 
+-- 6. Student Verification & UIDAI e-KYC Table (Zero raw Aadhaar stored)
+CREATE TABLE IF NOT EXISTS public.hms_verifications (
+  id TEXT PRIMARY KEY,
+  admission_number TEXT UNIQUE NOT NULL,
+  student_name TEXT NOT NULL,
+  dob TEXT NOT NULL,
+  standard TEXT NOT NULL,
+  parent_name TEXT NOT NULL,
+  registered_mobile TEXT NOT NULL,
+  status TEXT DEFAULT 'Pending', -- 'Verified', 'Pending', 'Failed'
+  is_otp_verified BOOLEAN DEFAULT false,
+  aadhaar_kyc_status TEXT DEFAULT 'Pending', -- 'Verified', 'Pending', 'Failed'
+  aadhaar_kyc_ref_id TEXT, -- Cryptographic UIDAI e-KYC reference token only
+  consent_given BOOLEAN DEFAULT true,
+  consent_timestamp TIMESTAMPTZ,
+  verified_at TIMESTAMPTZ,
+  academic_year TEXT DEFAULT '2026–2027',
+  notes TEXT,
+  created_at TIMESTAMPTZ DEFAULT NOW()
+);
+
 -- Enable Row Level Security (RLS) & Public Policies for School Web Access
 ALTER TABLE public.hms_admissions ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.hms_news ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.hms_photos ENABLE ROW LEVEL SECURITY;
 ALTER TABLE public.hms_videos ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.hms_verifications ENABLE ROW LEVEL SECURITY;
 
 -- Allow read/write access for anonymous client key in educational portal demo
 DO $$ 
@@ -487,6 +509,9 @@ BEGIN
   END IF;
   IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'allow_all_videos') THEN
     CREATE POLICY allow_all_videos ON public.hms_videos FOR ALL USING (true) WITH CHECK (true);
+  END IF;
+  IF NOT EXISTS (SELECT 1 FROM pg_policies WHERE policyname = 'allow_all_verifications') THEN
+    CREATE POLICY allow_all_verifications ON public.hms_verifications FOR ALL USING (true) WITH CHECK (true);
   END IF;
 END $$;
 `;

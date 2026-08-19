@@ -73,9 +73,9 @@ export const ContactSection: React.FC = () => {
               </div>
               <div>
                 <h4 className="font-bold text-[#2C2A26] text-sm font-['Cinzel',serif]">Phone & WhatsApp Numbers</h4>
-                <div className="text-xs text-[#706B63] mt-1 space-y-0.5 font-normal">
-                  <a href="tel:+919629978066" className="block hover:text-[#5A5A40] transition-colors font-semibold text-[#2C2A26]">+91 96299 78066 (Principal / WhatsApp / Admissions)</a>
-                  <a href="tel:+919443218902" className="block hover:text-[#5A5A40] transition-colors">+91 94432 18902 (School Administration Desk)</a>
+                <div className="text-xs text-[#706B63] mt-1 space-y-1 font-normal">
+                  <a href="tel:+919943461787" className="block hover:text-[#5A5A40] transition-colors font-semibold text-[#2C2A26]">+91 99434 61787 (School Office / WhatsApp Helpline)</a>
+                  <a href="tel:+919629978066" className="block hover:text-[#5A5A40] transition-colors text-[#5A5A40] font-medium">+91 96299 78066 (Principal's Desk)</a>
                 </div>
               </div>
             </div>
@@ -157,7 +157,7 @@ export const ContactSection: React.FC = () => {
                     <input
                       type="tel"
                       required
-                      placeholder="+91 94432 XXXXX"
+                      placeholder="+91 99434 XXXXX"
                       value={phone}
                       onChange={(e) => setPhone(e.target.value)}
                       className="w-full px-4 py-2.5 rounded-full bg-[#F5F2ED] border border-[#E5E0D8] text-xs text-[#2C2A26] outline-none focus:border-[#5A5A40] focus:ring-1 focus:ring-[#5A5A40]"

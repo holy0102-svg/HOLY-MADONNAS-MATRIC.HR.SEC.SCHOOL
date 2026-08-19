@@ -23,7 +23,7 @@ import {
 } from 'lucide-react';
 
 export const Header: React.FC<{ onOpenAI?: () => void }> = ({ onOpenAI }) => {
-  const { language, setLanguage, t, openAdmissionModal, openAdminModal, openAIAssistant, openSEOInspector } = useSchool();
+  const { language, setLanguage, t, openAdmissionModal, openAdminModal, openAIAssistant, openSEOInspector, openSqlEditor } = useSchool();
   const [isScrolled, setIsScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [dropdownOpen, setDropdownOpen] = useState(false);
@@ -58,7 +58,7 @@ export const Header: React.FC<{ onOpenAI?: () => void }> = ({ onOpenAI }) => {
           <div className="flex items-center gap-4 flex-wrap text-[#5A5A40] font-medium">
             <a 
               id="top-phone-link"
-              href="tel:+919629978066" 
+              href="tel:+919943461787" 
               className="flex items-center gap-1.5 hover:text-[#2C2A26] transition-colors"
             >
               <Phone className="w-3.5 h-3.5 text-[#5A5A40]" />
@@ -96,11 +96,11 @@ export const Header: React.FC<{ onOpenAI?: () => void }> = ({ onOpenAI }) => {
             {/* SQL Studio Quick Trigger */}
             <button
               id="btn-open-sql-studio"
-              onClick={openAdminModal}
-              className="hidden sm:flex items-center gap-1 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-800 border border-emerald-500/30 px-2.5 py-1 rounded-full text-xs font-semibold transition-all shadow-xs cursor-pointer"
-              title="Open Cloud Database & SQL Studio"
+              onClick={openSqlEditor}
+              className="flex items-center gap-1.5 bg-emerald-600/10 hover:bg-emerald-600/20 text-emerald-800 border border-emerald-500/40 px-3 py-1 rounded-full text-xs font-bold transition-all shadow-xs cursor-pointer"
+              title="Open Supabase Cloud Database & Interactive SQL Studio"
             >
-              <Database className="w-3 h-3 text-emerald-600" />
+              <Database className="w-3.5 h-3.5 text-emerald-600 animate-pulse" />
               <span>SQL Studio</span>
             </button>
 

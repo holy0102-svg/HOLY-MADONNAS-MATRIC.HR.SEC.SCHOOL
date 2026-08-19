@@ -15,11 +15,12 @@ import {
   ChevronRight,
   Sparkles,
   ShieldCheck,
-  Globe
+  Globe,
+  Database
 } from 'lucide-react';
 
 export const Footer: React.FC = () => {
-  const { language, t, openAdminModal, openAdmissionModal, openSEOInspector } = useSchool();
+  const { language, t, openAdminModal, openAdmissionModal, openSEOInspector, openSqlEditor } = useSchool();
 
   return (
     <footer className="bg-[#24221E] text-white border-t border-[#3A3731] relative overflow-hidden">
@@ -173,9 +174,12 @@ export const Footer: React.FC = () => {
                 <MapPin className="w-4 h-4 text-[#C8C2B4] shrink-0 mt-0.5" />
                 <span>{t.schoolAddress}</span>
               </div>
-              <div className="flex items-center gap-2">
-                <Phone className="w-4 h-4 text-[#C8C2B4] shrink-0" />
-                <a href="tel:+919629978066" className="hover:text-white">+91 96299 78066</a>
+              <div className="flex items-start gap-2">
+                <Phone className="w-4 h-4 text-[#C8C2B4] shrink-0 mt-0.5" />
+                <div className="space-y-0.5">
+                  <a href="tel:+919943461787" className="block hover:text-white font-semibold text-white">+91 99434 61787 <span className="text-[10px] text-[#A8A295] font-normal">(School / WhatsApp)</span></a>
+                  <a href="tel:+919629978066" className="block hover:text-white text-[#C8C2B4]">+91 96299 78066 <span className="text-[10px] text-[#8A847C]">(Principal)</span></a>
+                </div>
               </div>
               <div className="flex items-center gap-2">
                 <Mail className="w-4 h-4 text-[#C8C2B4] shrink-0" />
@@ -203,6 +207,14 @@ export const Footer: React.FC = () => {
               >
                 <Lock className="w-3.5 h-3.5 text-[#8C857B]" />
                 <span>Staff & Admin Portal Login</span>
+              </button>
+
+              <button
+                onClick={openSqlEditor}
+                className="w-full py-2 bg-emerald-950/40 hover:bg-emerald-900/50 text-emerald-300 hover:text-emerald-200 border border-emerald-600/40 rounded-xl text-[11px] font-bold transition-colors flex items-center justify-center gap-1.5 cursor-pointer shadow-xs"
+              >
+                <Database className="w-3.5 h-3.5 text-emerald-400" />
+                <span>⚡ Supabase SQL Studio & Cloud DB</span>
               </button>
             </div>
           </div>

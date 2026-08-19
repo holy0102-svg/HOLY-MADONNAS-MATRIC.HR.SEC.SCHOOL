@@ -306,8 +306,8 @@ export const SECTION_METADATA_CONFIG: Record<SectionType, SectionSEOMetadata> = 
     hash: '#contact',
     titleEn: 'Contact Us, Campus Location & Office Hours | Holy Madonnas School Lalapet',
     titleTa: 'தொடர்பு கொள்ள, பள்ளி அமைவிடம் & அலுவலக நேரம் | ஹோலி மடோனாஸ் பள்ளி லாலாபேட்டை',
-    descriptionEn: 'Get in touch with Holy Madonnas Matriculation Higher Secondary School, Lalapet. Phone: +91 96299 78066, Email: holylalapet123@gmail.com. Located on Trichy-Karur Main Road.',
-    descriptionTa: 'ஹோலி மடோனாஸ் மேல்நிலைப் பள்ளியைத் தொடர்பு கொள்ள: +91 96299 78066. திருச்சி - கரூர் மெயின் ரோடு, லாலாபேட்டை, தமிழ்நாடு 639105.',
+    descriptionEn: 'Get in touch with Holy Madonnas Matriculation Higher Secondary School, Lalapet. Phone: +91 99434 61787 / +91 96299 78066, Email: holylalapet123@gmail.com. Located on Trichy-Karur Main Road.',
+    descriptionTa: 'ஹோலி மடோனாஸ் மேல்நிலைப் பள்ளியைத் தொடர்பு கொள்ள: +91 99434 61787 / +91 96299 78066. திருச்சி - கரூர் மெயின் ரோடு, லாலாபேட்டை, தமிழ்நாடு 639105.',
     keywordsEn: 'Holy Madonnas school contact, Lalapet school address, phone number, Karur matriculation school contact, school office timings',
     keywordsTa: 'ஹோலி மடோனாஸ் பள்ளி முகவரி, தொலைபேசி எண், லாலாபேட்டை பள்ளி அமைவிடம்',
     ogType: 'website',
@@ -319,7 +319,7 @@ export const SECTION_METADATA_CONFIG: Record<SectionType, SectionSEOMetadata> = 
       '@context': 'https://schema.org',
       '@type': 'School',
       name: 'Holy Madonnas Matriculation Higher Secondary School',
-      telephone: '+91 96299 78066',
+      telephone: '+91 99434 61787',
       email: 'holylalapet123@gmail.com',
       url: `${origin}/#contact`,
       address: {
@@ -370,7 +370,7 @@ export const SECTION_METADATA_CONFIG: Record<SectionType, SectionSEOMetadata> = 
       image: 'https://images.unsplash.com/photo-1577896851231-70ef18881754?auto=format&fit=crop&w=1200&q=80',
       description: 'Recognized by Govt. of Tamil Nadu • Co-Educational Institution offering holistic education from Pre-KG to Std XII.',
       motto: 'Knowledge • Values • Discipline • Excellence',
-      telephone: '+91 96299 78066',
+      telephone: '+91 99434 61787',
       email: 'holylalapet123@gmail.com',
       address: {
         '@type': 'PostalAddress',
